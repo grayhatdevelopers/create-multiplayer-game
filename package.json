@@ -1,6 +1,6 @@
 {
   "name": "create-multiplayer-game",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.mjs",
   "scripts": {
