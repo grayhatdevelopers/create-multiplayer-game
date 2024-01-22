@@ -5,7 +5,8 @@
   "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm index.mjs"
+    "start": "node -r esm index.mjs",
+    "install": "node -r esm index.mjs"
   },
   "keywords": [],
   "author": "",
