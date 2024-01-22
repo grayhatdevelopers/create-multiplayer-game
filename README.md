@@ -10,25 +10,7 @@ Create a multiplayer web game in seconds 👾🚀
 With NPM:
 
 ```bash
-$ npm create-multiplayer-game@latest
-```
-
-With Yarn:
-
-```bash
-$ yarn create-multiplayer-game
-```
-
-With PNPM:
-
-```bash
-$ pnpm create-multiplayer-game
-```
-
-With Bun:
-
-```bash
-$ bun create-multiplayer-game
+$ npx create-multiplayer-game@latest
 ```
 
 Then follow the prompts!
@@ -37,38 +19,13 @@ You can also directly specify the project name and the template you want to use 
 
 ```bash
 # npm 7+, extra double-dash is needed:
-npm create-multiplayer-game@latest my-vue-app -- --template vue
-
-# yarn
-yarn create-multiplayer-game my-vue-app --template vue
-
-# pnpm
-pnpm create-multiplayer-game my-vue-app --template vue
-
-# Bun
-bun create-multiplayer-game my-vue-app --template vue
+npm exec create-multiplayer-game@latest my-awesome-game --template vite-react-ts
 ```
 
 Currently supported template presets include:
 
-- `vanilla`
-- `vanilla-ts`
-- `vue`
-- `vue-ts`
-- `react`
-- `react-ts`
-- `react-swc`
-- `react-swc-ts`
-- `preact`
-- `preact-ts`
-- `lit`
-- `lit-ts`
-- `svelte`
-- `svelte-ts`
-- `solid`
-- `solid-ts`
-- `qwik`
-- `qwik-ts`
+- `vite-react-ts`
+- `next-ts`
 
 You can use `.` for the project name to scaffold in the current directory.
 
