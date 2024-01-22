@@ -5,27 +5,9 @@ import download from 'download-git-repo';
 import ora from 'ora';
 import chalk from 'chalk';
 import path from 'path';
+import _ from 'lodash';
 
-const templateOptions = [
-  'vanilla',
-  'vanilla-ts',
-  'vue',
-  'vue-ts',
-  'react',
-  'react-ts',
-  'react-swc',
-  'react-swc-ts',
-  'preact',
-  'preact-ts',
-  'lit',
-  'lit-ts',
-  'svelte',
-  'svelte-ts',
-  'solid',
-  'solid-ts',
-  'qwik',
-  'qwik-ts',
-];
+import templates from './templates.mjs'
 
 program
   .version('1.0.0')
@@ -35,14 +17,29 @@ program
 
 async function run() {
   let projectName = program.args[0];
+  let gameName = projectName
   let templateChoice = program.template;
 
   if (!projectName) {
+    const answersGameName = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'gameName',
+        message: 'What will you call your game?',
+        validate: (input) => !!input.trim(),
+      },
+    ]);
+    
+    gameName = answersGameName.gameName;
+    
+    const kebabCaseGameName = _.kebabCase(gameName);
+
     const answers = await inquirer.prompt([
       {
         type: 'input',
         name: 'projectName',
         message: 'Enter the project name:',
+        default: kebabCaseGameName,
         validate: (input) => !!input.trim(),
       },
     ]);
@@ -55,13 +52,13 @@ async function run() {
         type: 'list',
         name: 'templateChoice',
         message: 'Which template would you like to use?',
-        choices: templateOptions,
+        choices: templates.map((template) => template.id),
       },
     ]);
     templateChoice = answers.templateChoice;
   }
 
-  const templateRepoUrl = `your/${templateChoice}-template-repo`;
+  const templateRepoUrl = templates.find((template) => template.id === templateChoice).url;
   const targetPath = path.join(process.cwd(), projectName);
   const spinner = ora('Downloading project template...').start();
 

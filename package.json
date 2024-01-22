@@ -1,12 +1,15 @@
 {
   "name": "create-multiplayer-game",
   "version": "0.0.3",
-  "description": "",
+  "description": "Create a multiplayer web game in seconds 👾🚀",
   "main": "index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grayhatdevelopers/create-multiplayer-game.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm index.mjs",
-    "install": "node -r esm index.mjs"
+    "start": "node -r esm index.mjs"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,7 @@
     "commander": "^11.1.0",
     "download-git-repo": "^3.0.2",
     "inquirer": "^9.2.12",
+    "lodash": "^4.17.21",
     "ora": "^8.0.1",
     "react": "^18.2.0"
   },
