@@ -1,5 +1,7 @@
 # create-multiplayer-game <a href="https://npmjs.com/package/create-multiplayer-game"><img src="https://img.shields.io/npm/v/create-multiplayer-game" alt="npm package"></a>
 
+Create a multiplayer web game in seconds 👾🚀
+
 ## Scaffolding Your First Web Game Project
 
 > **Compatibility Note:**
