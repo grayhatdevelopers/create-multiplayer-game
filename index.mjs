@@ -5,6 +5,7 @@ import download from 'download-git-repo';
 import ora from 'ora';
 import chalk from 'chalk';
 import path from 'path';
+import { URLSearchParams } from 'url';
 
 const templateOptions = [
   'Vite + React + React Router + Framer Motion + Tailwind + Material UI',
@@ -12,21 +13,30 @@ const templateOptions = [
   'Nextjs (pagesDir) + Framer Motion + Tailwind + Material UI',
 ];
 
+// Create the prompt module outside the action function
+const prompt = inquirer.createPromptModule();
+
 program
   .version('1.0.0')
-  .command('init <project-name>')
+  .arguments('[project-name]')
   .description('Initialize a new web game project')
-  .action(async (projectName) => {
-    const prompt = inquirer.createPromptModule();
+  .action(async (projectName = null) => {
+      const answers = await prompt([
+        !projectName ? {
+          type: 'input',
+          name: 'projectName',
+          message: 'Enter the project name:',
+          validate: (input) => (input ? true : 'Project name is required'),
+        } : undefined,
+        {
+          type: 'list',
+          name: 'templateChoice',
+          message: 'Which template would you like to use?',
+          choices: templateOptions,
+        },
+      ].filter(Boolean));
 
-    const answers = await prompt([
-      {
-        type: 'list',
-        name: 'templateChoice',
-        message: 'Which template would you like to use?',
-        choices: templateOptions,
-      },
-    ]);
+      if (!projectName) projectName = answers.projectName;
 
     const templateIndex = templateOptions.indexOf(answers.templateChoice);
 

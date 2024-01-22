@@ -18,7 +18,8 @@
     "commander": "^11.1.0",
     "download-git-repo": "^3.0.2",
     "inquirer": "^9.2.12",
-    "ora": "^8.0.1"
+    "ora": "^8.0.1",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "esm": "^3.2.25"
