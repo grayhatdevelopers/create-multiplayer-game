@@ -1,4 +1,4 @@
-# create-web-game <a href="https://npmjs.com/package/create-web-game"><img src="https://img.shields.io/npm/v/create-web-game" alt="npm package"></a>
+# create-multiplayer-game <a href="https://npmjs.com/package/create-multiplayer-game"><img src="https://img.shields.io/npm/v/create-multiplayer-game" alt="npm package"></a>
 
 ## Scaffolding Your First Web Game Project
 
@@ -8,25 +8,25 @@
 With NPM:
 
 ```bash
-$ npm create-web-game@latest
+$ npm create-multiplayer-game@latest
 ```
 
 With Yarn:
 
 ```bash
-$ yarn create-web-game
+$ yarn create-multiplayer-game
 ```
 
 With PNPM:
 
 ```bash
-$ pnpm create-web-game
+$ pnpm create-multiplayer-game
 ```
 
 With Bun:
 
 ```bash
-$ bun create-web-game
+$ bun create-multiplayer-game
 ```
 
 Then follow the prompts!
@@ -35,16 +35,16 @@ You can also directly specify the project name and the template you want to use 
 
 ```bash
 # npm 7+, extra double-dash is needed:
-npm create-web-game@latest my-vue-app -- --template vue
+npm create-multiplayer-game@latest my-vue-app -- --template vue
 
 # yarn
-yarn create-web-game my-vue-app --template vue
+yarn create-multiplayer-game my-vue-app --template vue
 
 # pnpm
-pnpm create-web-game my-vue-app --template vue
+pnpm create-multiplayer-game my-vue-app --template vue
 
 # Bun
-bun create-web-game my-vue-app --template vue
+bun create-multiplayer-game my-vue-app --template vue
 ```
 
 Currently supported template presets include:
@@ -72,7 +72,7 @@ You can use `.` for the project name to scaffold in the current directory.
 
 ## Community Templates
 
-create-web-game is a tool to quickly start a multiplayer web game project from a basic template for popular frameworks. Check out Awesome Playroom for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
+create-multiplayer-game is a tool to quickly start a multiplayer web game project from a basic template for popular frameworks. Check out Awesome Playroom for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
 
 ```bash
 npx degit user/project my-project
