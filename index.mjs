@@ -8,6 +8,7 @@ import path from 'path';
 import _ from 'lodash';
 
 import templates from './templates.mjs'
+import { replaceInDirectory } from './replacer.mjs';
 
 program
   .version('1.0.0')
@@ -67,10 +68,12 @@ async function run() {
       spinner.fail(chalk.red('Failed to download project template.'));
       console.error(err);
     } else {
+
+      // Cookie cutting
+      replaceInDirectory(targetPath, new RegExp('%GAME_NAME%', 'g'), gameName);
+
       spinner.succeed(chalk.green('Project template downloaded successfully.'));
       console.log(chalk.yellow(`\nProject initialized at ${targetPath}`));
-
-      // Additional setup or post-processing here if needed
 
       console.log(chalk.cyan('\nHappy coding!'));
     }
