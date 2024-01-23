@@ -1,6 +1,6 @@
 {
   "name": "create-multiplayer-game",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Create a multiplayer web game in seconds 👾🚀",
   "main": "index.mjs",
   "repository": {
