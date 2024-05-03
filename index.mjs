@@ -11,7 +11,7 @@ import { promises as fs } from 'fs'; // Import promises version of fs for async 
 import templates from './templates.mjs';
 import { replaceInDirectory } from './replacer.mjs';
 
-let DEFAULT_CONFIG_NAME = 'create-multiplayer-game.config.js'
+let DEFAULT_CONFIG_NAME = 'create-multiplayer-game.config.json'
 
 program
   .version('1.0.0')
@@ -38,11 +38,13 @@ async function run() {
 
   // If config file exists, read configuration from it
   if (configExists) {
+    const spinner = ora(`Reading config file at ${path.join(process.cwd(), configPath)}...`).start();
     const configData = await fs.readFile(configPath, 'utf-8');
-    const config = eval(configData); // Safely evaluate configuration data
+    const config = JSON.parse(configData);
     if (config.projectName) projectName = config.projectName;
     if (config.gameName) gameName = config.gameName;
     if (config.templateChoice) templateChoice = config.templateChoice;
+    spinner.succeed();
   } else {
     // If config file doesn't exist, prompt user for input
     if (!projectName) {
@@ -101,18 +103,16 @@ async function run() {
       console.log(chalk.cyan('\nHappy coding!'));
 
       // Write configuration to file
-      const configData = 
-`module.exports = {
-  projectName: '${projectName}',
-  gameName: '${gameName}',
-  templateChoice: '${templateChoice}',
-  generatedAt: ${currentRun},
-  lastRunAt: ${currentRun}
-};
-`;
+      const configData = {
+        projectName,
+        gameName,
+        templateChoice,
+        generatedAt: currentRun,
+        lastRunAt: currentRun
+      };
 
       let configFileWritePath = path.join(targetPath, DEFAULT_CONFIG_NAME)
-      fs.writeFile(configFileWritePath, configData)
+      fs.writeFile(configFileWritePath, JSON.stringify(configData, null, 2))
         .then(() => console.log(chalk.green(`Configuration saved to ${configFileWritePath}`)))
         .catch((err) => console.error(chalk.red(`Error writing configuration file: ${err.message}`)));
     }
