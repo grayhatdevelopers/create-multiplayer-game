@@ -11,7 +11,7 @@ import fs from 'fs/promises'; // Import promises version of fs for async file op
 import templates from './templates.mjs';
 import { replaceInDirectory } from './replacer.mjs';
 
-const DEFAULT_CONFIG_NAME = 'create-multiplayer-game.config.js'
+let DEFAULT_CONFIG_NAME = 'create-multiplayer-game.config.js'
 
 program
   .version('1.0.0')
@@ -25,6 +25,7 @@ async function run() {
   let gameName = projectName;
   let templateChoice = program.template;
   let configPath = program.config || DEFAULT_CONFIG_NAME; // Default config file path
+  let currentRun = Date.now()
 
   // Check if config file exists
   let configExists = false;
@@ -99,14 +100,18 @@ async function run() {
       console.log(chalk.cyan('\nHappy coding!'));
 
       // Write configuration to file
-      const configData = `
-        module.exports = {
-          projectName: '${projectName}',
-          gameName: '${gameName}',
-          templateChoice: '${templateChoice}'
-        };
-      `;
-      fs.writeFile(path.join(targetPath, DEFAULT_CONFIG_NAME), configData)
+      const configData = 
+`module.exports = {
+  projectName: '${projectName}',
+  gameName: '${gameName}',
+  templateChoice: '${templateChoice}',
+  generatedAt: ${currentRun},
+  lastRunAt: ${currentRun}
+};
+`;
+
+      let configFileWritePath = path.join(targetPath, DEFAULT_CONFIG_NAME)
+      fs.writeFile(configFileWritePath, configData)
         .then(() => console.log(chalk.green(`Configuration saved to ${configPath}`)))
         .catch((err) => console.error(chalk.red(`Error writing configuration file: ${err.message}`)));
     }
