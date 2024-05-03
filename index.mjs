@@ -26,6 +26,8 @@ async function run() {
   let templateChoice = program.template;
   let configPath = program.config || DEFAULT_CONFIG_NAME; // Default config file path
   let currentRun = Date.now()
+  let generatedAt = currentRun
+  let lastRunAt = currentRun
 
   // Check if config file exists
   let configExists = false;
@@ -44,6 +46,7 @@ async function run() {
     if (config.projectName) projectName = config.projectName;
     if (config.gameName) gameName = config.gameName;
     if (config.templateChoice) templateChoice = config.templateChoice;
+    if (config.generatedAt) generatedAt = config.generatedAt
     spinner.succeed();
   } else {
     // If config file doesn't exist, prompt user for input
@@ -107,8 +110,8 @@ async function run() {
         projectName,
         gameName,
         templateChoice,
-        generatedAt: currentRun,
-        lastRunAt: currentRun
+        generatedAt,
+        lastRunAt
       };
 
       let configFileWritePath = path.join(targetPath, DEFAULT_CONFIG_NAME)
