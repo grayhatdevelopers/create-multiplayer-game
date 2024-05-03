@@ -6,7 +6,7 @@ import ora from 'ora';
 import chalk from 'chalk';
 import path from 'path';
 import _ from 'lodash';
-import fs from 'fs/promises'; // Import promises version of fs for async file operations
+import { promises as fs } from 'fs'; // Import promises version of fs for async file operations
 
 import templates from './templates.mjs';
 import { replaceInDirectory } from './replacer.mjs';
@@ -38,7 +38,8 @@ async function run() {
 
   // If config file exists, read configuration from it
   if (configExists) {
-    const config = require(path.resolve(configPath));
+    const configData = await fs.readFile(configPath, 'utf-8');
+    const config = eval(configData); // Safely evaluate configuration data
     if (config.projectName) projectName = config.projectName;
     if (config.gameName) gameName = config.gameName;
     if (config.templateChoice) templateChoice = config.templateChoice;
@@ -112,7 +113,7 @@ async function run() {
 
       let configFileWritePath = path.join(targetPath, DEFAULT_CONFIG_NAME)
       fs.writeFile(configFileWritePath, configData)
-        .then(() => console.log(chalk.green(`Configuration saved to ${configPath}`)))
+        .then(() => console.log(chalk.green(`Configuration saved to ${configFileWritePath}`)))
         .catch((err) => console.error(chalk.red(`Error writing configuration file: ${err.message}`)));
     }
   });
