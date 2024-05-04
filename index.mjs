@@ -11,7 +11,11 @@ import { promises as fs } from "fs"; // Import promises version of fs for async 
 import templates from "./templates.mjs";
 import { replaceInDirectory } from "./replacer.mjs";
 
+import packageJson from "./package.json" with { type: "json" };
+
 let DEFAULT_CONFIG_NAME = "create-multiplayer-game.config.json";
+
+const { version } = packageJson
 
 program
   .version("1.0.0")
@@ -116,6 +120,7 @@ async function run() {
         templateChoice,
         generatedAt,
         lastRunAt,
+        version
       };
 
       let configFileWritePath = path.join(targetPath, DEFAULT_CONFIG_NAME);
