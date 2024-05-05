@@ -88,25 +88,37 @@ async function run() {
         type: "list",
         name: "templateChoice",
         message: "Which template would you like to use?",
-        choices: templates.map((template) => template.id),
+        choices: templates.map((template) => template.id + (template.source === "community" ? " (community)" : "")),
       },
     ]);
-    templateChoice = answers.templateChoice;
+    templateChoice = answers.templateChoice.split(" ")[0]; // <-- remove any addons to the ID
   }
 
-  const templateRepoUrl = templates.find(
+  const chosenTemplate = templates.find(
     (template) => template.id === templateChoice
-  ).url;
+  )
+
+  const templateRepoUrl = chosenTemplate.url;
   const targetPath = path.join(process.cwd(), projectName);
   const spinner = ora("Downloading project template...").start();
 
   download(templateRepoUrl, targetPath, { clone: true }, (err) => {
     if (err) {
       spinner.fail(chalk.red("Failed to download project template."));
+      if (chosenTemplate.price === "premium") {
+        console.info(chalk.yellow("This template is 👑 Premium. We're releasing Premium purchases soon at https://grayhat.studio/games/pricing. Until then, sit tight!"))
+      }
+      else {
+        console.error("Couldn't clone your project. Please check your git configuration, or check if a folder with a similar name to the project you want to create already exists.");
+        console.log("Detailed error log:");
+      }
       console.error(err);
     } else {
-      // Cookie cutting
-      replaceInDirectory(targetPath, new RegExp("%GAME_NAME%", "g"), gameName);
+
+      if (chosenTemplate.editable) {
+        // Cookie cutting
+        replaceInDirectory(targetPath, new RegExp("%GAME_NAME%", "g"), gameName);
+      }
 
       spinner.succeed(chalk.green("Project template downloaded successfully."));
       console.log(chalk.yellow(`\nProject initialized at ${targetPath}`));
