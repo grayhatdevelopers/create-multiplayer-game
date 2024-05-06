@@ -5,7 +5,7 @@ Create a multiplayer web game in seconds 👾🚀
 ## Scaffolding Your First Web Game Project
 
 > **Compatibility Note:**
-> PlayroomKit requires [Node.js](https://nodejs.org/en/) version 18+, 20+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+> create-multiplayer-game requires [Node.js](https://nodejs.org/en/) version 21+.
 
 With NPM:
 
@@ -25,7 +25,9 @@ npm exec create-multiplayer-game@latest my-awesome-game --template vite-react-ts
 Currently supported template presets include:
 
 - `vite-react-ts`
-- `next-ts` (coming soon)
+- `next-ts`
+- `vite-react-ts-premium` (coming soon)
+- Some community-driven templates
 
 You can use `.` for the project name to scaffold in the current directory.
 
