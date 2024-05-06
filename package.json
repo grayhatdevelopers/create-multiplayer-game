@@ -15,7 +15,8 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "create-multiplayer-game": "index.mjs"
+    "create-multiplayer-game": "index.mjs",
+    "cmg": "index.mjs"
   },
   "dependencies": {
     "chalk": "^5.3.0",
