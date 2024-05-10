@@ -2,21 +2,21 @@
   "name": "create-multiplayer-game",
   "version": "0.0.18",
   "description": "Create a multiplayer web game in seconds 👾🚀",
-  "main": "index.mjs",
+  "main": "./src/index.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/grayhatdevelopers/create-multiplayer-game.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm index.mjs"
+    "start": "node ./src/index.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bin": {
-    "create-multiplayer-game": "index.mjs",
-    "cmg": "index.mjs"
+    "create-multiplayer-game": "./src/index.mjs",
+    "cmg": "./src/index.mjs"
   },
   "dependencies": {
     "chalk": "^5.3.0",

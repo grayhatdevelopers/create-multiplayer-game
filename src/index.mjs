@@ -8,23 +8,27 @@ import path from "path";
 import _ from "lodash";
 import { promises as fs } from "fs"; // Import promises version of fs for async file operations
 
-import templates from "./templates.mjs";
-import { replaceInDirectory } from "./replacer.mjs";
+import templates from "./utils/data/templates.mjs";
+import { replaceInDirectory } from "./utils/cookie-cutting/replacer.mjs";
 
-import packageJson from "./package.json" with { type: "json" };
+import packageJson from "../package.json" with { type: "json" };
 
 let DEFAULT_CONFIG_NAME = "create-multiplayer-game.config.json";
 
 const { version } = packageJson
 
 program
-  .version("1.0.0")
+  .version(
+    version,
+    "-v, --version",
+    "Display the version number"
+  )
   .arguments("[project-name]")
   .option("-t, --template <template>", "Specify the template")
   .option("-c, --config <config>", "Specify the configuration file")
   .parse(process.argv);
 
-async function run() {
+async function main() {
   let projectName = program.args[0];
   let gameName = projectName;
   let templateChoice = program.template;
@@ -151,4 +155,4 @@ async function run() {
   });
 }
 
-run();
+main();
