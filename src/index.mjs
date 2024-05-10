@@ -12,6 +12,7 @@ import templates from "./utils/data/templates.mjs";
 import { replaceInDirectory } from "./utils/cookie-cutting/replacer.mjs";
 
 import packageJson from "../package.json" with { type: "json" };
+import { logger } from "./utils/logger";
 
 let DEFAULT_CONFIG_NAME = "create-multiplayer-game.config.json";
 
@@ -110,11 +111,11 @@ async function main() {
     if (err) {
       spinner.fail(chalk.red("Failed to download project template."));
       if (chosenTemplate.price === "premium") {
-        console.info(chalk.yellow("This template is 👑 Premium. We're releasing Premium purchases soon at https://grayhat.studio/games/pricing. Until then, sit tight!"))
+        logger.warn("This template is 👑 Premium. We're releasing Premium purchases soon at https://grayhat.studio/games/pricing. Until then, sit tight!")
       }
       else {
-        console.error("Couldn't clone your project. Please check your git configuration, or check if a folder with a similar name to the project you want to create already exists.");
-        console.log("Detailed error log:");
+        logger.error("Couldn't clone your project. Please check your git configuration, or check if a folder with a similar name to the project you want to create already exists.");
+        logger.log("Detailed error log:");
       }
       console.error(err);
     } else {
@@ -125,9 +126,9 @@ async function main() {
       }
 
       spinner.succeed(chalk.green("Project template downloaded successfully."));
-      console.log(chalk.yellow(`\nProject initialized at ${targetPath}`));
+      logger.warn(`\nProject initialized at ${targetPath}`);
 
-      console.log(chalk.cyan("\nHappy coding!"));
+      logger.info("\nHappy coding!");
 
       // Write configuration to file
       const configData = {
@@ -142,14 +143,10 @@ async function main() {
       let configFileWritePath = path.join(targetPath, DEFAULT_CONFIG_NAME);
       fs.writeFile(configFileWritePath, JSON.stringify(configData, null, 2))
         .then(() =>
-          console.log(
-            chalk.green(`Configuration saved to ${configFileWritePath}`)
-          )
+          logger.success(`Configuration saved to ${configFileWritePath}`)
         )
         .catch((err) =>
-          console.error(
-            chalk.red(`Error writing configuration file: ${err.message}`)
-          )
+          logger.error(`Error writing configuration file: ${err.message}`)
         );
     }
   });
