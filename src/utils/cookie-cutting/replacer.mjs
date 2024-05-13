@@ -11,6 +11,11 @@ export function replaceInDirectory(directoryPath, search, replace) {
   const files = fs.readdirSync(directoryPath);
 
   files.forEach((file) => {
+    // Ignore .git folder
+    if (file === '.git') {
+      return;
+    }
+
     const filePath = path.join(directoryPath, file);
     const stat = fs.statSync(filePath);
 

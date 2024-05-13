@@ -1,7 +1,12 @@
 const templates = [
     {
         id: 'vite-react-ts',
-        url: 'grayhatdevelopers/vite-react-ts-multiplayer-game#main',
+        repository: {
+            url: 'https://github.com/grayhatdevelopers/vite-react-ts-multiplayer-game',
+            project: 'grayhatdevelopers/vite-react-ts-multiplayer-game',
+            branch: 'main',
+            provider: 'github',
+        },
         framework: 'vite',
         languages: ['typescript'],
         packageManagers: ['npm', 'yarn', 'pnpm'],
@@ -12,7 +17,12 @@ const templates = [
     },
     {
         id: 'next-ts',
-        url: 'grayhatdevelopers/next-ts-multiplayer-game#main',
+        repository: {
+            url: 'https://github.com/grayhatdevelopers/next-ts-multiplayer-game',
+            project: 'grayhatdevelopers/next-ts-multiplayer-game',
+            branch: 'main',
+            provider: 'github',
+        },
         framework: 'nextjs',
         languages: ['typescript'],
         packageManagers: ['npm', 'yarn', 'pnpm'],
@@ -23,7 +33,12 @@ const templates = [
     },
     {
         id: 'vite-ts-premium',
-        url: 'grayhatdevelopers/vite-ts-multiplayer-game-premium#main',
+        repository: {
+            url: 'https://github.com/grayhatdevelopers/vite-ts-multiplayer-game-premium',
+            project: 'grayhatdevelopers/vite-ts-multiplayer-game-premium',
+            branch: 'main',
+            provider: 'github',
+        },
         framework: 'vite',
         languages: ['typescript'],
         packageManagers: ['npm', 'yarn', 'pnpm'],
@@ -34,7 +49,12 @@ const templates = [
     },
     {
         id: 'r3f-multiplayer-pirate-card-game',
-        url: 'wass08/r3f-multiplayer-pirate-card-game#main',
+        repository: {
+            url: 'https://github.com/wass08/r3f-multiplayer-pirate-card-game',
+            project: 'wass08/r3f-multiplayer-pirate-card-game',
+            branch: 'main',
+            provider: 'github',
+        },
         framework: 'vite',
         languages: ['typescript'],
         packageManagers: ['npm', 'yarn', 'pnpm'],
