@@ -5,8 +5,9 @@ export const cloneTemplate = async (url, name = "", path = ".") => {
     const permissions = await $`chmod -R 777 ./${name} `;
 }
 
-export const addTemplateUpstream = async (url, path = ".") => {
-    const branch = await $`git remote add upstream ${url}`;
+export const addTemplateUpstream = async (url, path) => {
+    if (path) process.chdir(path)
+    return await $`git remote add upstream ${url}`;
 }
 
 export const isGitDirty = async (path = ".") => {

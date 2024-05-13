@@ -111,7 +111,17 @@ export const initAction = async (name, options, program) => {
     console.error(err);
   }
 
-  await addTemplateUpstream(templateRepoUrl, targetPath)
+
+  try {
+    const addTemplateUpstreamOutput = await addTemplateUpstream(templateRepoUrl, targetPath)
+    // console.log("addTemplateUpstreamOutput", addTemplateUpstreamOutput);
+  }
+  catch(error) {
+    if (!String(error).includes("remote upstream already exists")) {
+      logger.error("Couldn't configure the repository properly.")
+      logger.error(error)
+    }
+  }
 
   if (chosenTemplate.editable) {
     // Cookie cutting
