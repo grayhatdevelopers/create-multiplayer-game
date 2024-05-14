@@ -1,5 +1,5 @@
-import fs from "fs";
+import packageJson from '../../../package.json';
 
 export const getPackageInfo = () => {
-    return JSON.parse(fs.readFileSync("./package.json"))
+    return packageJson
 }
