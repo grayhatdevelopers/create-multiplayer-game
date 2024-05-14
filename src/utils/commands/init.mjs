@@ -12,9 +12,10 @@ import templates from "../data/templates.mjs";
 import { replaceInDirectory } from "../cookie-cutting/replacer.mjs";
 import { addTemplateUpstream, cloneTemplate } from "../git-actions.mjs";
 
-import packageJson from "../../../package.json" with { type: "json" };
 import { DEFAULT_CONFIG_NAME } from '../data/cmg-config.mjs';
-const { version } = packageJson
+
+import { getPackageInfo } from "../data/package-info.mjs";
+const { version } = getPackageInfo()
 
 export const initAction = async (name, options, program) => {
     

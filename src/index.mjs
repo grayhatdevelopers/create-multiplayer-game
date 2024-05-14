@@ -4,8 +4,9 @@ import { program } from "commander";
 import { sync } from "./utils/commands/sync.mjs";
 import { init, initAction } from "./utils/commands/init.mjs";
 
-import packageJson from "../package.json" with { type: "json" };
-const { version } = packageJson
+import { getPackageInfo } from "./utils/data/package-info.mjs";
+
+const { version } = getPackageInfo()
 
 const cmds = {
   init,
