@@ -62,7 +62,39 @@ const templates = [
         source: 'community',
         editable: false,
         price: 'free',
-    }
+    },
+    {
+        id: 'discord-activity-starter',
+        repository: {
+            url: 'https://github.com/Hugo-Dz/discord-activity-starter',
+            project: 'Hugo-Dz/discord-activity-starter',
+            branch: 'main',
+            provider: 'github',
+        },
+        framework: 'svelte',
+        languages: ['typescript'],
+        packageManagers: ['npm', 'yarn', 'pnpm'],
+        type: 'standalone',
+        source: 'community',
+        editable: false,
+        price: 'free',
+    },
+    {
+        id: 'wawa-guys-starter',
+        repository: {
+            url: 'https://github.com/wass08/wawa-guys-starter',
+            project: 'wass08/wawa-guys-starter',
+            branch: 'main',
+            provider: 'github',
+        },
+        framework: 'svelte',
+        languages: ['typescript'],
+        packageManagers: ['npm', 'yarn', 'pnpm'],
+        type: 'standalone',
+        source: 'community',
+        editable: false,
+        price: 'free',
+    },
 ];
 
 export default templates

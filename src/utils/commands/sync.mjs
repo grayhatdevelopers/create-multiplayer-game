@@ -33,7 +33,7 @@ export const sync = new Command()
       }
 
       const output = await syncTemplate();
-      logger.success("Synced with remote configuration successfully! Here's the git output:")
+      logger.success("Sync operation complete! Here's the git output:")
       logger.log(output.stdout)
 
     } catch (error) {
