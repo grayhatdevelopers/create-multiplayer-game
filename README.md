@@ -48,3 +48,10 @@ If the project uses `main` as the default branch, suffix the project repo with `
 ```bash
 npx degit user/project#main my-project
 ```
+
+### Want to add a template?
+Feel free to add a template of your choice to create-multiplayer-game.
+1. Edit this file: https://github.com/grayhatdevelopers/create-multiplayer-game/blob/main/src/utils/data/templates.mjs
+2. Make a Pull Request.
+
+It'll be reviewed and tested by the maintainers before merging.
