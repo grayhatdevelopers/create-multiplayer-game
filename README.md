@@ -1,6 +1,13 @@
 # create-multiplayer-game <a href="https://npmjs.com/package/create-multiplayer-game"><img src="https://img.shields.io/npm/v/create-multiplayer-game" alt="npm package"></a>
 
-Create a multiplayer web game in seconds 👾🚀
+> ℹ️ This is a work-in-progress. Star (⭐) this repo to follow updates.
+
+The web game framework which gets out of your way, and gives you control. Build games in days, not weeks!
+
+## Use cases
+- You can use it as a base for a fresh project
+- As a wrapper for an existing game (e.g. to add start/end screens, to make your game a PWA)
+- To quickly test out some logic in a multiplayer scenario
 
 ## Scaffolding Your First Web Game Project
 
@@ -10,16 +17,15 @@ Create a multiplayer web game in seconds 👾🚀
 With NPM:
 
 ```bash
-$ npx create-multiplayer-game@latest
+npx create-multiplayer-game@latest
 ```
 
 Then follow the prompts!
 
-You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + React project, run:
+You can also directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + React project, you can run:
 
 ```bash
-# npm 7+, extra double-dash is needed:
-npm exec create-multiplayer-game@latest my-awesome-game --template vite-react-ts
+npx create-multiplayer-game@latest my-awesome-game --template vite-react-ts
 ```
 
 Currently supported template presets include:
@@ -30,6 +36,15 @@ Currently supported template presets include:
 - Some community-driven templates
 
 You can use `.` for the project name to scaffold in the current directory.
+
+## Syncing your template
+You'll want to periodically pull updates from your base template. This ensures you're always packed with the latest features, bug fixes and more. This may cause merge conflicts.
+
+To pull the latest from the template, simply run the following command in the **project directory**:
+
+```bash
+npx create-multiplayer-game sync
+```
 
 ## Community Templates
 
