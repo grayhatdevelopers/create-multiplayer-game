@@ -126,7 +126,8 @@ export const initAction = async (name, options, program) => {
 
   if (chosenTemplate.editable) {
     // Cookie cutting
-    replaceInDirectory(targetPath, new RegExp("%GAME_NAME%", "g"), gameName);
+    replaceInDirectory(targetPath, new RegExp("%projectName%", "g"), projectName);
+    replaceInDirectory(targetPath, new RegExp("%gameName%", "g"), gameName);
   }
 
   spinner.succeed(chalk.green("Project template downloaded successfully."));
