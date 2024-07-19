@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://i.imgur.com/QbZxbgX.png" width="100%" style="border-radius: 12px">
+</div>
+
 # create-multiplayer-game <a href="https://npmjs.com/package/create-multiplayer-game"><img src="https://img.shields.io/npm/v/create-multiplayer-game" alt="npm package"></a>
 
 > ℹ️ This is a work-in-progress. Star (⭐) this repo to follow updates.
